@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import shortUrl from "../model/shortUrl.Model";
+import shortUrl from "../models/shortUrl.Model";
 
 export async function createShortUrl(req: Request, res: Response) {
   const { destination } = req.body;
