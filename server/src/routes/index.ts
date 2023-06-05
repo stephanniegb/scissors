@@ -1,11 +1,12 @@
 import { Express, Request, Response } from "express";
 import { v4 as uuidv4 } from "uuid";
-import { createShortUrl } from "../controller/shortUrl.controller";
-
-// import { customAlphabet } from "nanoid";
-
-// const nanoId = customAlphabet("abcdefghijklmnopqrstuvwxyz", 6);
-// const uniqueId = uuidv4();
+import {
+  createShortUrl,
+  getAnalytics,
+  handleRedirect,
+} from "../controller/shortUrl.controller";
+import validateResource from "../middleware/validateResources";
+import shortUrlSchema from "../schemas/createShortUrl.schema";
 
 const generateUniqueId = (): string => {
   const uniqueId = uuidv4();
@@ -18,13 +19,15 @@ function routes(app: Express) {
     return res.send(`App is healthy and strong ${generateUniqueId()}`);
   });
 
-  app.post("/shorten-url", (req, res) => {
-    const destination = req.body.destination;
-    // Do something with the destination
+  // app.post("/shorten-url", (req, res) => {
+  //   const destination = req.body.destination;
+  //   return res.send(`URL shortened successfully: ${destination}`);
+  // });
 
-    return res.send(`URL shortened successfully: ${destination}`);
-  });
+  app.post("/api/url", validateResource(shortUrlSchema), createShortUrl);
 
-  app.post("/api/url", createShortUrl);
+  app.get("/:shortId", handleRedirect);
+
+  app.get("/api/analytics", getAnalytics);
 }
 export default routes;
