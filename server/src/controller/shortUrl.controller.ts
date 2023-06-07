@@ -5,35 +5,42 @@ import analytics from "../models/analytics.model";
 export async function createShortUrl(req: Request, res: Response) {
   const { destination } = req.body;
 
-  const newUrl = await shortUrl.create({ destination });
-  return res.send(newUrl);
+  try {
+    const newUrl = await shortUrl.create({ destination });
+    return res.send(newUrl.toObject());
+  } catch (error) {
+    console.error("Failed to create short URL:", error);
+    return res.sendStatus(500);
+  }
 }
 
 export async function handleRedirect(req: Request, res: Response) {
-  console.log("createShortUrl controller function executed");
+  console.log("handleRedirect controller function executed");
   const { shortId } = req.params;
 
-  const short = await shortUrl.findOne({ shortId }).lean();
+  try {
+    const short = await shortUrl.findOne({ shortId }).lean();
 
-  if (!short) {
-    return res.sendStatus(404);
+    if (!short) {
+      return res.sendStatus(404);
+    }
+
+    await analytics.create({ shortUrl: short._id });
+
+    return res.redirect(short.destination);
+  } catch (error) {
+    console.error("Failed to handle redirect:", error);
+    return res.sendStatus(500);
   }
-  analytics.create({ shortUrl: short.id });
-  return res.redirect(short.destination);
 }
 
-export async function getAnalytics() {
+export async function getAnalytics(req: Request, res: Response) {
   try {
-    // Fetch analytics data from the data storage system or analytics service
-    const analyticsData = await analytics.find();
+    const analyticsData = await analytics.find().populate("shortUrl");
 
-    // Process the analytics data as needed
-    // You can perform calculations, transformations, filtering, etc.
-
-    // Return the processed analytics data
-    return analyticsData;
+    return res.json(analyticsData);
   } catch (error) {
-    // Handle any errors that occur during the fetching or processing of analytics data
     console.error("Failed to fetch analytics:", error);
+    return res.sendStatus(500);
   }
 }
