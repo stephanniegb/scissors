@@ -18,7 +18,7 @@ const schema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-    default: generateUniqueId(),
+    default: generateUniqueId,
   },
   destination: {
     type: String,
