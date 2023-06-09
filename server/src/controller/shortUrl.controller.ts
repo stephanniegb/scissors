@@ -4,9 +4,13 @@ import analytics from "../models/analytics.model";
 
 export async function createShortUrl(req: Request, res: Response) {
   const { destination } = req.body;
+  if (!destination) return res.status(400).json({ error: "url is rquired" });
 
   try {
-    const newUrl = await shortUrl.create({ destination });
+    const newUrl = await shortUrl.create({
+      destination: destination,
+      visitHistory: [],
+    });
     return res.send(newUrl.toObject());
   } catch (error) {
     console.error("Failed to create short URL:", error);

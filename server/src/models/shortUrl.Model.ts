@@ -13,18 +13,28 @@ export interface shortURL extends Document {
   shortId: string;
   destination: string;
 }
-const schema = new mongoose.Schema({
-  shortId: {
-    type: String,
-    unique: true,
-    required: true,
-    default: generateUniqueId,
+const schema = new mongoose.Schema(
+  {
+    shortId: {
+      type: String,
+      unique: true,
+      required: true,
+      default: generateUniqueId,
+    },
+    destination: {
+      type: String,
+      required: true,
+    },
+    visitHistory: [
+      {
+        timestamp: {
+          type: Number,
+        },
+      },
+    ],
   },
-  destination: {
-    type: String,
-    required: true,
-  },
-});
+  { timestamps: true }
+);
 
 const shortUrl = mongoose.model<shortURL>("shortUrl", schema);
 

@@ -11,7 +11,8 @@ import shortUrlSchema from "../schemas/createShortUrl.schema";
 
 const generateUniqueId = (): string => {
   const uniqueId = uuidv4();
-  const shortId = uniqueId.substr(0, 6); // Truncate to the first 6 characters
+  const shortId = uniqueId.replace(/-/g, "").slice(0, 6);
+  // const shortId = uniqueId.substr(0, 6); // Truncate to the first 6 characters
   return shortId;
 };
 
