@@ -30,6 +30,6 @@ function routes(app: Express) {
 
   app.get("/:shortId", handleRedirect);
 
-  app.get("/api/analytics", getAnalytics);
+  app.get("/api/analytics/:shortId", getAnalytics);
 }
 export default routes;

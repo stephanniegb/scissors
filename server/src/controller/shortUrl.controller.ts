@@ -23,7 +23,22 @@ export async function handleRedirect(req: Request, res: Response) {
   const { shortId } = req.params;
 
   try {
-    const short = await shortUrl.findOne({ shortId }).lean();
+    // const short = await shortUrl.findOne({ shortId }).lean();
+
+    const short = await shortUrl
+      .findOneAndUpdate(
+        {
+          shortId,
+        },
+        {
+          $push: {
+            visitHistory: {
+              timestamp: Date.now(),
+            },
+          },
+        }
+      )
+      .lean();
 
     if (!short) {
       return res.sendStatus(404);
@@ -38,11 +53,42 @@ export async function handleRedirect(req: Request, res: Response) {
   }
 }
 
+// export async function getAnalytics(req: Request, res: Response) {
+//   try {
+//     const analyticsData = await analytics.find().populate("shortUrl");
+
+//     return res.json(analyticsData);
+//   } catch (error) {
+//     console.error("Failed to fetch analytics:", error);
+//     return res.sendStatus(500);
+//   }
+// }
+
 export async function getAnalytics(req: Request, res: Response) {
   try {
-    const analyticsData = await analytics.find().populate("shortUrl");
+    const analyticsData: any[] = await analytics
+      .find()
+      .populate("shortUrl")
+      .lean();
 
-    return res.json(analyticsData);
+    let totalClicks = 0;
+    const visitHistory: any[] = [];
+
+    for (const data of analyticsData) {
+      if (
+        data.shortUrl &&
+        data.shortUrl.visitHistory &&
+        Array.isArray(data.shortUrl.visitHistory)
+      ) {
+        totalClicks += data.shortUrl.visitHistory.length;
+        visitHistory.push(...data.shortUrl.visitHistory);
+      }
+    }
+
+    return res.json({
+      totalClicks,
+      ana: visitHistory,
+    });
   } catch (error) {
     console.error("Failed to fetch analytics:", error);
     return res.sendStatus(500);
