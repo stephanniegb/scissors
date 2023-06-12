@@ -1,0 +1,88 @@
+@use "../globals" as *;
+main {
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  .auth-wrappers {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1%;
+
+    .google-apple-div {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+    }
+    p {
+      text-align: center;
+      font-size: $small-font-size;
+    }
+    a {
+      text-decoration: none;
+      color: $work-Blue;
+    }
+    .dash {
+      display: inline-block;
+      width: 45%;
+      border: 0.5px solid #8494a1;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+      input {
+        border: 2px solid $work-Blue;
+        padding: 0.8rem;
+        border-radius: 5px;
+        width: 100%;
+      }
+      input::placeholder {
+        color: #8494a1;
+      }
+      .input-div {
+        height: 2rem;
+      }
+      .password-div {
+        position: relative;
+      }
+      .error {
+        color: rgb(250, 74, 74);
+        font-size: 0.8rem;
+        padding: 0;
+        margin: 0;
+        text-align: start;
+      }
+      .show-btn {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        top: 0.8rem;
+        right: 3%;
+        .eye-icon {
+          font-size: 1rem;
+          color: $work-Blue;
+        }
+      }
+      .submit-btn {
+        background-color: $work-Blue;
+        border-radius: 25px;
+        border: none;
+        padding: 0.8rem;
+        color: $work-white;
+        width: 100%;
+      }
+    }
+    .forgot-pass {
+      text-align: end;
+      padding: 0;
+      margin: 0;
+      font-size: $small-font-size;
+    }
+    .ligther {
+      color: #8494a1;
+    }
+  }
+}

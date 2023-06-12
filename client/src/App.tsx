@@ -1,10 +1,14 @@
-import "./App.css";
-import { UrlShortner } from "./components";
+import "./styles/styles.scss";
+import { Footer, Navbar, UrlShortner } from "./components";
+import Routing from "./routes/Routing";
 
 function App() {
   return (
     <>
-      <UrlShortner />
+      {/* <Navbar /> */}
+      <Routing />
+      {/* <UrlShortner /> */}
+      <Footer />
     </>
   );
 }
