@@ -6,9 +6,9 @@ function App() {
   return (
     <>
       {/* <Navbar /> */}
-      <Routing />
-      {/* <UrlShortner /> */}
-      <Footer />
+      {/* <Routing /> */}
+      <UrlShortner />
+      {/* <Footer /> */}
     </>
   );
 }

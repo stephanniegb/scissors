@@ -41,7 +41,10 @@ function UrlShortener() {
         />
         <button type="submit">Create short URL</button> <br />
         {shortUrl && (
-          <a href={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}>Click me</a>
+          <div>
+            <a href={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}>Click me</a>
+            <p>{`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}</p>
+          </div>
         )}
         {/* {JSON.stringify(shortUrl)} */}
       </form>
