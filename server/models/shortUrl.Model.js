@@ -1,19 +1,13 @@
-import mongoose, { Document } from "mongoose";
+import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 
-// const uniqueId = uuidv4();
-
-const generateUniqueId = (): string => {
+const generateUniqueId = () => {
   const uniqueId = uuidv4();
   const shortId = uniqueId.substr(0, 6); // Truncate to the first 6 characters
   return shortId;
 };
 
-export interface shortURL extends Document {
-  shortId: string;
-  destination: string;
-}
-const schema = new mongoose.Schema(
+const linkschema = new mongoose.Schema(
   {
     shortId: {
       type: String,
@@ -24,6 +18,11 @@ const schema = new mongoose.Schema(
     destination: {
       type: String,
       required: true,
+    },
+    custom: {
+      type: String,
+      unique: true,
+      sparse: true,
     },
     visitHistory: [
       {
@@ -36,6 +35,6 @@ const schema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const shortUrl = mongoose.model<shortURL>("shortUrl", schema);
+const shortUrl = mongoose.model("shortUrl", linkschema);
 
 export default shortUrl;

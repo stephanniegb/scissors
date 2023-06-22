@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
-import routes from "./routes";
+import routes from "./routes/index.js";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 dotenv.config();
-import db from "./db";
+import db from "./db.js";
 
 const PORT = process.env.PORT || 3000;
 const ORIGIN = process.env.CORS_ORIGIN;

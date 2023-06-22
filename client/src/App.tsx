@@ -1,10 +1,11 @@
 import "./styles/styles.scss";
-import { Footer, Navbar } from "./components";
+import { Custom, Footer, Navbar } from "./components";
 import Routing from "./routes/Routing";
 
 function App() {
   return (
     <>
+      <Custom />
       {/* <Navbar /> */}
       <Routing />
       <Footer />
