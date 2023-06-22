@@ -1,5 +1,3 @@
-import React from "react";
-
 function Hero() {
   return (
     <section>
@@ -8,7 +6,7 @@ function Hero() {
         <h1>
           {" "}
           Optimize Your Online Experience with Our Advanced{" "}
-          <span>URL Shortening</span> URL Shortening Solution
+          <u>URL Shortening</u> URL Shortening Solution
         </h1>
         <p>
           Personalize your shortened URLs to align with your brand identity.
@@ -18,6 +16,10 @@ function Hero() {
         <div>
           <button>Sign Up</button>
           <button>Learn more</button>
+        </div>
+        <div>
+          <img src="/images/Frame 29546.png" alt="" />
+          <img src="/images/Group 3.png" alt="" />
         </div>
       </main>
     </section>
