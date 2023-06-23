@@ -1,54 +1,47 @@
+import { useState } from "react";
+import FAQData from "../data/FAQ.json";
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 function FAQ() {
+  const faqData: FAQItem[] = FAQData;
+  const [active, setActive] = useState<number | null>(0);
+
+  const handleToggle = (activeId: number | null) => {
+    if (active === activeId) {
+      setActive(null);
+    } else {
+      setActive(activeId);
+    }
+  };
   return (
-    <div>
+    <section id="faq-section">
       <h2>FAQs</h2>
-      <section>
-        <ul>
-          How does URL shortening work?
-          <li>
-            URL shortening works by taking a long URL and creating a shorter,
-            condensed version that redirects to the original URL. When a user
-            clicks on the shortened link, they are redirected to the intended
-            destination.
-          </li>
-        </ul>
-        <ul>
-          Is it necessary to create an account to use the URL shortening
-          service?
-          <li></li>
-        </ul>
-        <ul>
-          Are the shortened links permanent? Will they expire?
-          <li></li>
-        </ul>
-        <ul>
-          Are there any limitations on the number of URLs I can shorten?
-          <li></li>
-        </ul>
-        <ul>
-          Can I customize the shortened URLs to reflect my brand or content?
-          <li></li>
-        </ul>
-        <ul>
-          Can I track the performance of my shortened URLs?
-          <li></li>
-        </ul>
-        <ul>
-          How secure is the URL shortening service? Are the shortened links
-          protected against spam or malicious activity?
-          <li></li>
-        </ul>
-        <ul>
-          What is a QR code and what can it do?
-          <li></li>
-        </ul>
-        <ul>
-          Is there an API available for integrating the URL shortening service
-          into my own applications or websites?
-          <li></li>
-        </ul>
+      <section id="questions-section">
+        {faqData &&
+          faqData.map((faq, index) => {
+            return (
+              <ul key={index} onClick={() => handleToggle(index)}>
+                <div className="qest-div">
+                  <span>{faq.question}</span>
+                  <button>
+                    {active === index ? (
+                      <img src="/images/minus.svg" alt="" />
+                    ) : (
+                      <img src="/images/plus.svg" alt="" />
+                    )}
+                  </button>
+                </div>
+                <li className={active === index ? "active" : ""}>
+                  {faq.answer}
+                </li>
+              </ul>
+            );
+          })}
       </section>
-    </div>
+    </section>
   );
 }
 

@@ -33,7 +33,7 @@ function Shortner() {
     }
   };
   return (
-    <div>
+    <section id="shortner-section">
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -41,34 +41,52 @@ function Shortner() {
           value={destination}
           onChange={handleUrlChange}
         />
-        <select name="" id="">
-          <option value="">Choose Domain</option>
-        </select>
-        <input
-          type="text"
-          placeholder="Type Alias here"
-          onChange={handleCustomChange}
-        />
-        <button type="submit">Trim URL</button>
+        <div id="input-div">
+          <select name="" id="">
+            <option value="">Choose Domain</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Type Alias here"
+            onChange={handleCustomChange}
+          />
+        </div>
+        <button type="submit">
+          Trim URL <img src="/images/magic wand.svg" alt="" />
+        </button>
         <p>
-          By clicking TrimURL, I agree to the Terms of Service, Privacy Policy
-          and Use of Cookies.
+          By clicking TrimURL, I agree to the <b>Terms of Service</b>, <br />
+          <b>Privacy Policy</b> and Use of Cookies.
         </p>
       </form>
-      {shortUrl && custom.length > 0 && (
-        <div>
-          <a href={`${SERVER_ENDPOINTS}/${shortUrl.custom}`}>Click me</a>
-          <p>{`${SERVER_ENDPOINTS}/${shortUrl.custom}`}</p>
-        </div>
-      )}
-      {shortUrl && (
-        <div>
-          <a href={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}>Click me</a>
-          <p>{`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}</p>
-        </div>
-      )}
-      {JSON.stringify(shortUrl)}
-    </div>
+      <div id="url-div">
+        {shortUrl && custom.length > 0 && (
+          <>
+            <div>
+              <h4>Link</h4>
+              <a href={`${SERVER_ENDPOINTS}/${shortUrl.custom}`}>Click me</a>
+            </div>
+            <div>
+              <h4>Copy Url</h4>
+              <p>{`${SERVER_ENDPOINTS}/${shortUrl.custom}`}</p>
+            </div>
+          </>
+        )}
+        {shortUrl && (
+          <>
+            <div>
+              <h4>Link</h4>
+              <a href={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}>Click me</a>
+            </div>
+            <div>
+              <h4>Copy Url</h4>
+              <p>{`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}</p>
+            </div>
+          </>
+        )}
+        {/* {JSON.stringify(shortUrl)} */}
+      </div>
+    </section>
   );
 }
 

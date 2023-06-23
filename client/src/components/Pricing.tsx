@@ -1,20 +1,22 @@
 function Pricing() {
   return (
-    <section>
+    <section id="pricing-section">
       <section>
-        <h3>
-          A <span className="blue">price perfect</span> for your needs.
-        </h3>
+        <h2>
+          A <span className="blue-text">price perfect</span> for your needs.
+        </h2>
         <p>
           From catering for your personal, business, event, socials needs, you
           can be rest assured we have you in mind in our pricing.
         </p>
       </section>
-      <section>
-        <div>
-          <p>Basic</p>
-          <h2>Free</h2>
-          <h3>Free plan for all users</h3>
+      <section id="prices">
+        <div className="price">
+          <div>
+            <p>Basic</p>
+            <h2>Free</h2>
+            <h3>Free plan for all users</h3>
+          </div>
           <ul>
             <li>
               <img src="/images/check-circle(1).svg" alt="icon" />
@@ -42,10 +44,12 @@ function Pricing() {
             </li>
           </ul>
         </div>
-        <div>
-          <p>Professional</p>
-          <h2>$15/month</h2>
-          <h3>Ideal for business creators</h3>
+        <div className="price">
+          <div>
+            <p>Professional</p>
+            <h2>$15/month</h2>
+            <h3>Ideal for business creators</h3>
+          </div>
           <ul>
             <li>
               {" "}
@@ -71,10 +75,12 @@ function Pricing() {
           </ul>
         </div>
 
-        <div>
-          <p>Teams</p>
-          <h2>$25/month</h2>
-          <h3>Share with up to 10 users</h3>
+        <div className="price">
+          <div>
+            <p>Teams</p>
+            <h2>$25/month</h2>
+            <h3>Share with up to 10 users</h3>
+          </div>
           <ul>
             <li>
               {" "}
@@ -104,12 +110,9 @@ function Pricing() {
           </ul>
         </div>
       </section>
-      <section>
-        <div>
-          <button>Get Custom Pricing</button>
-          <button>Select Pricing</button>
-        </div>
-      </section>
+      {/* <section style={{ alignSelf: "center" }}> */}
+      <button>Select Pricing</button>
+      {/* </section> */}
     </section>
   );
 }

@@ -1,13 +1,14 @@
 function Features() {
   return (
-    <section>
-      <div>
+    <section id="features-section">
+      <div id="possiblites-div">
         <div>
           <h3>
-            One Stop.Four <span className="blue">Possibilities.</span>
+            One Stop. <br /> Four{" "}
+            <span className="blue-text">Possibilities.</span>
           </h3>
         </div>
-        <div>
+        <div id="stat">
           <div>
             <h4>3M</h4>
             <p>Active users</p>
@@ -27,10 +28,10 @@ function Features() {
         </div>
       </div>
 
-      <div>
-        <div>
+      <div id="why-section">
+        <div id="why-section-text">
           <h3>
-            Why choose <span className="blue">Scissors</span>
+            Why choose <span className="blue-text">Scissors</span>
           </h3>
           <p>
             Scissors is the hub of everything that has to do with your link
@@ -40,7 +41,7 @@ function Features() {
             these is second to none.{" "}
           </p>
         </div>
-        <div>
+        <div id="features">
           <div>
             <img src="/images/Group 6.svg" alt="icon" />
             <h4>URL Shortening</h4>

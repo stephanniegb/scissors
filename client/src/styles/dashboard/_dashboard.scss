@@ -1,0 +1,336 @@
+@use "../globals" as *;
+main {
+  display: grid;
+  gap: 2rem;
+  .blue-text {
+    color: $work-Blue;
+  }
+  nav {
+    display: grid;
+    grid-template-columns: 15% 55% 30%;
+    padding-inline: 10%;
+    justify-content: center;
+    .blue-text {
+      color: $work-Blue;
+    }
+    .logo-div {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    ul {
+      display: flex;
+
+      gap: 3rem;
+      li {
+        list-style: none;
+        cursor: pointer;
+      }
+    }
+    #nav-btns {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      button {
+        padding: 3%;
+        border: none;
+        cursor: pointer;
+      }
+      .transparent-btn {
+        background: transparent;
+        border: none;
+        color: $work-Blue;
+      }
+      .blue-btn {
+        background-color: $work-Blue;
+        color: $work-white;
+        border-radius: 25px;
+        width: 6rem;
+        padding: 0.7rem;
+      }
+    }
+  }
+  // // // // // // // //
+  #hero {
+    padding: 2% 10%;
+    align-items: center;
+    justify-content: center;
+    // height: 100vh;
+    h1 {
+      text-align: center;
+      // padding-inline: 15%;
+      font-size: 2rem;
+      line-height: 1.5;
+    }
+    p {
+      text-align: center;
+    }
+    button {
+      padding: 1%;
+      border: none;
+    }
+    .transparent-btn {
+      background: transparent;
+      border: none;
+      color: $work-Blue;
+    }
+    .blue-btn {
+      background-color: $work-Blue;
+      color: $work-white;
+      border-radius: 25px;
+      width: 6rem;
+      padding: 0.7rem;
+      // width: 10%;
+    }
+    #hero-btns {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+    #hero-imgs {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  #features-section {
+    #possiblites-div {
+      padding-inline: 10%;
+      background-color: $grey;
+      display: grid;
+      grid-template-columns: 40% 60%;
+      justify-content: space-between;
+    }
+    h3 {
+      font-size: 2rem;
+    }
+    #stat {
+      display: flex;
+      gap: 2rem;
+      div {
+        padding: 3%;
+      }
+    }
+    #why-section {
+      display: flex;
+      padding: 3%;
+      align-items: center;
+
+      #features {
+        display: grid;
+        padding: 3%;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      #why-section-text {
+        padding-inline: 10%;
+      }
+    }
+  }
+  #pricing-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+    }
+    p {
+      text-align: center;
+    }
+    #prices {
+      display: flex;
+      justify-content: center;
+    }
+    .price:first-child,
+    .price:last-child {
+      border: 1px solid $work-Blue;
+    }
+    .price:first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+    .price:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+    .price:nth-child(2) {
+      background: linear-gradient(
+        180deg,
+        #1e3448 99.99%,
+        rgba(30, 52, 72, 0) 100%
+      );
+      color: $work-white;
+      padding: 7% 5%;
+      border-radius: 8px;
+    }
+    .price {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-self: center;
+      padding: 2%;
+      h2,
+      p {
+        text-align: start;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      li {
+        list-style: none;
+        margin: 0;
+      }
+    }
+    button {
+      background-color: $work-Blue;
+      color: $work-white;
+      border: none;
+      border-radius: 25px;
+      // width: 10%;
+      padding: 0.8rem;
+      align-self: center;
+    }
+  }
+  #shortner-section {
+    background: url("../../../public/images/Rectangle\ 1.png");
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-inline: auto;
+      width: 45%;
+      padding: 2%;
+      gap: 2.2rem;
+      background-color: $work-white;
+      border-radius: 8px;
+      input,
+      select {
+        border: 1px solid $work-Blue;
+        padding: 0.8rem;
+        border-radius: 8px;
+        width: 80%;
+        background-color: transparent;
+        align-self: center;
+      }
+      input::placeholder {
+        color: $work-Blue;
+      }
+
+      button {
+        background-color: $work-Blue;
+        color: $work-white;
+        border: none;
+        border-radius: 25px;
+        width: 80%;
+        padding: 0.8rem;
+        align-self: center;
+      }
+      select {
+        appearance: none;
+        background-image: url("../../../public/images/Vector\(18\).svg");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+      }
+
+      #input-div {
+        display: flex;
+        gap: 1rem;
+        width: 80%;
+        margin-inline: auto;
+      }
+      p {
+        color: $work-Blue;
+        width: 80%;
+        align-self: center;
+      }
+    }
+    #url-div {
+      background-color: $work-white;
+      width: 45%;
+      padding: 2%;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-self: center;
+      margin-inline: auto;
+    }
+  }
+  #faq-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+    }
+    #questions-section {
+      width: 70%;
+      margin: auto;
+      padding: 5%;
+      height: 100vh;
+
+      ul {
+        margin: 0;
+        padding: 1rem;
+        border-bottom: 1px solid $work-fontColor;
+        transition: all 0.4s ease-in-out;
+
+        button {
+          background: transparent;
+          border: none;
+          transition: all 0.4s ease-in-out;
+        }
+        .qest-div {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+      li {
+        display: none;
+      }
+      li.active {
+        display: block;
+        transition: all 0.4s ease-in-out;
+        list-style: none;
+        margin: 0;
+        margin-top: 1rem;
+      }
+    }
+  }
+  #banner-section {
+    background: url("../../../public/images/Rectangle\ 1.png");
+    padding: 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    h2 {
+      font-size: 2rem;
+      color: $work-white;
+    }
+    .blue-btn {
+      background-color: $work-Blue;
+      border: none;
+      color: $work-white;
+      border-radius: 25px;
+      width: 6rem;
+      padding: 0.7rem;
+    }
+  }
+}

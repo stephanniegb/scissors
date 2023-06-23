@@ -1,4 +1,13 @@
-import { Navbar, Hero, Features, Pricing, Shortner, FAQ } from "../components";
+import {
+  Navbar,
+  Hero,
+  Features,
+  Pricing,
+  Shortner,
+  FAQ,
+  Footer,
+  Banner,
+} from "../components";
 
 function Dashboard() {
   return (
@@ -9,6 +18,8 @@ function Dashboard() {
       <Pricing />
       <Shortner />
       <FAQ />
+      <Banner />
+      <Footer />
     </main>
   );
 }

@@ -5,4 +5,4 @@ export { default as Features } from "./Features";
 export { default as Pricing } from "./Pricing";
 export { default as Shortner } from "./Shortner";
 export { default as FAQ } from "./FAQ";
-export { default as Custom } from "./UrlShortner";
+export { default as Banner } from "./Banner";
