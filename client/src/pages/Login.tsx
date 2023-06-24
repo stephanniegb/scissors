@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { formConfig } from "../util/forms";
+import { loginFormConfig } from "../util/forms";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -17,7 +17,7 @@ function Login() {
     handleSubmit,
     errors,
     touched,
-  } = useFormik(formConfig);
+  } = useFormik(loginFormConfig);
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
@@ -37,6 +37,7 @@ function Login() {
         <div>
           <span className="dash"></span> or <span className="dash"></span>
         </div>
+
         <form onSubmit={handleSubmit}>
           <div className="input-div">
             <input
@@ -91,6 +92,7 @@ function Login() {
             Log in
           </button>
         </form>
+
         <div>
           <p>
             Don’t have an account?

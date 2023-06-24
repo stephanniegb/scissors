@@ -1,13 +1,19 @@
 import { useFormik } from "formik";
-import { formConfig } from "../util/forms";
+import { registerFormConfig } from "../util/forms";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 library.add(faEye, faEyeSlash);
 import { useState } from "react";
-
 import { Link } from "react-router-dom";
+
+// interface RegisterformValues {
+//   email: string;
+//   username: string;
+//   createPassword: string;
+//   confirmPassword: string;
+// }
 
 function Register() {
   const {
@@ -18,12 +24,39 @@ function Register() {
     handleSubmit,
     errors,
     touched,
-  } = useFormik(formConfig);
+  } = useFormik(registerFormConfig);
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
+
+  // const register = async (values: RegisterformValues) => {
+  //   // login authentication with firebase
+  //   const { email, createPassword, username } = values;
+
+  //   // signInWithEmailAndPassword(auth,email_Username,password)
+  //   try {
+  //     const userCredential = await createUserWithEmailAndPassword(
+  //       auth,
+  //       email,
+  //       createPassword
+  //     );
+  //     const { user } = userCredential;
+  //     await updateProfile(user, { displayName: username });
+  //     // Do something with the authenticated user, e.g., redirect to dashboard
+  //     console.log("User:", user);
+  //   } catch (error) {
+  //     // Handle authentication error
+  //     console.error(error);
+  //   }
+  // };
+  // const onSubmit = (e: any) => {
+  //   e.preventDefault();
+  //   console.log("submited");
+  //   // register(values);
+  // };
+
   return (
     <main>
       <section className="auth-wrappers">
@@ -51,7 +84,7 @@ function Register() {
               value={values.username}
               placeholder="Username"
               className={
-                errors.username && touched.email_Username ? "input-error" : ""
+                errors.username && touched.username ? "input-error" : ""
               }
             />
             {errors.username && touched.username && (
