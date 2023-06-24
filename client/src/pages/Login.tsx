@@ -5,8 +5,9 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 library.add(faEye, faEyeSlash);
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function Login() {
   const {
@@ -18,6 +19,18 @@ function Login() {
     errors,
     touched,
   } = useFormik(loginFormConfig);
+
+  const navigate = useNavigate();
+
+  const { signInUsers, currentUser } = useContext(AuthContext);
+  console.log(currentUser);
+
+  const submitHandler = (e: any) => {
+    e.preventDefault();
+    signInUsers(values);
+    navigate("/urlshortner");
+    handleSubmit;
+  };
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
@@ -38,11 +51,11 @@ function Login() {
           <span className="dash"></span> or <span className="dash"></span>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitHandler}>
           <div className="input-div">
             <input
               type="text"
-              name="email_Username" // Update the name attribute
+              name="email_Username"
               onChange={handleChange}
               onBlur={handleBlur}
               placeholder="Email address or username"

@@ -5,17 +5,12 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 library.add(faEye, faEyeSlash);
-import { useState } from "react";
-import { Link } from "react-router-dom";
-
-// interface RegisterformValues {
-//   email: string;
-//   username: string;
-//   createPassword: string;
-//   confirmPassword: string;
-// }
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function Register() {
+  const navigate = useNavigate();
   const {
     values,
     handleChange,
@@ -31,31 +26,13 @@ function Register() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  // const register = async (values: RegisterformValues) => {
-  //   // login authentication with firebase
-  //   const { email, createPassword, username } = values;
-
-  //   // signInWithEmailAndPassword(auth,email_Username,password)
-  //   try {
-  //     const userCredential = await createUserWithEmailAndPassword(
-  //       auth,
-  //       email,
-  //       createPassword
-  //     );
-  //     const { user } = userCredential;
-  //     await updateProfile(user, { displayName: username });
-  //     // Do something with the authenticated user, e.g., redirect to dashboard
-  //     console.log("User:", user);
-  //   } catch (error) {
-  //     // Handle authentication error
-  //     console.error(error);
-  //   }
-  // };
-  // const onSubmit = (e: any) => {
-  //   e.preventDefault();
-  //   console.log("submited");
-  //   // register(values);
-  // };
+  const submitHandler = (e: any) => {
+    e.preventDefault();
+    createUsers(values);
+    handleSubmit;
+    navigate("/login");
+  };
+  const { createUsers } = useContext(AuthContext);
 
   return (
     <main>
@@ -74,7 +51,7 @@ function Register() {
         <div>
           <span className="dash"></span> or <span className="dash"></span>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitHandler}>
           <div className="input-div">
             <input
               type="text"
@@ -160,6 +137,7 @@ function Register() {
               <p className="error">{errors.confirmPassword}</p>
             )}
           </div>
+
           <button type="submit" disabled={isSubmitting} className="submit-btn">
             Sign up with Email
           </button>
