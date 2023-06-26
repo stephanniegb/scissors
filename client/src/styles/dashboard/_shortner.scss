@@ -1,0 +1,123 @@
+@use "../globals" as *;
+#shortner-section {
+  background: url("/images/Rectangle\ 1.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 2%;
+  @media (min-width: 49.75em) {
+    padding: 5%;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    // padding: 5%;
+    padding: 5% 2%;
+    gap: 1.5rem;
+    background-color: $work-white;
+    border-radius: 8px;
+    @media (min-width: 49.75em) {
+      width: 45%;
+    }
+    #btn-1 {
+      display: none;
+    }
+    input,
+    select {
+      border: 1px solid $work-Blue;
+      padding: 0.8rem;
+      border-radius: 8px;
+      width: 80%;
+      background-color: transparent;
+      align-self: center;
+    }
+    input::placeholder {
+      color: $work-Blue;
+    }
+
+    #btn-2 {
+      background-color: $work-Blue;
+      color: $work-white;
+      border: none;
+      border-radius: 25px;
+      width: 80%;
+      padding: 0.8rem;
+      align-self: center;
+    }
+    select {
+      appearance: none;
+      background-image: url("/images/Vector\(18\).svg");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+    }
+
+    #input-div {
+      display: flex;
+      gap: 1rem;
+      width: 80%;
+      margin-inline: auto;
+    }
+    p {
+      color: $work-Blue;
+      width: 80%;
+      align-self: center;
+    }
+  }
+  #results-div {
+    @media (min-width: 49.75em) {
+      width: 70%;
+    }
+    table {
+      background-color: $work-white;
+      width: 100%;
+      padding: 2%;
+      border-radius: 8px;
+      display: flex;
+
+      margin-inline: auto;
+
+      th {
+        text-align: start;
+        display: flex;
+        @media (min-width: 49.75em) {
+          display: block;
+        }
+      }
+      td {
+        display: flex;
+        cursor: pointer;
+        @media (min-width: 49.75em) {
+          display: block;
+        }
+      }
+    }
+    #colors-input-div {
+      background-color: $work-white;
+      display: flex;
+      border-radius: 8px;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 5%;
+      div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        input {
+          width: 100%;
+        }
+      }
+    }
+    #qr-img {
+      padding: 10%;
+      display: block;
+      max-width: 480px;
+      img {
+        border-radius: 8px;
+        width: 100%;
+      }
+    }
+  }
+}

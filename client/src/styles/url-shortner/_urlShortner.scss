@@ -17,14 +17,17 @@
     );
     color: $work-white;
     border-radius: 8px;
-
-    padding: 1rem;
+    padding: 1rem 0rem;
+    @media (min-width: 49.75em) {
+      padding: 1rem;
+    }
     #shortner-section {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 3rem;
+      min-height: 60vh;
     }
     input,
     select {
@@ -42,22 +45,37 @@
       gap: 2rem;
       background-color: $work-white;
       border-radius: 8px;
-      padding: 2rem;
-      width: 70%;
+      width: 100%;
       margin: 0 auto;
+      @media (min-width: 49.75em) {
+        width: 70%;
+        padding: 2rem;
+      }
     }
-    .form-width {
-      width: 70%;
-    }
+
     table {
       background-color: $work-white;
-      width: 70%;
       padding: 2%;
       border-radius: 8px;
       margin-inline: auto;
       color: black;
+
+      thead,
+      tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1%;
+        // @media (min-width: 49.75em) {
+        //   display: block;
+        // }
+      }
+
       th {
         text-align: start;
+      }
+      td {
+        display: flex;
       }
     }
     button {

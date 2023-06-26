@@ -1,0 +1,83 @@
+@use "../globals" as *;
+#pricing-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  h2 {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+  #prices {
+    @media (min-width: 49.75em) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .price:first-child,
+  .price:last-child {
+    border: 1px solid $work-Blue;
+    padding: 7% 5%;
+
+    @media (min-width: 49.75em) {
+      padding: 3%;
+    }
+  }
+  .price:first-child {
+    border-radius: 8px;
+    @media (min-width: 49.75em) {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+  }
+  .price:last-child {
+    border-radius: 8px;
+    @media (min-width: 49.75em) {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+  }
+  .price:nth-child(2) {
+    background: linear-gradient(
+      180deg,
+      #1e3448 99.99%,
+      rgba(30, 52, 72, 0) 100%
+    );
+    color: $work-white;
+    padding: 7% 5%;
+    border-radius: 8px;
+  }
+  .price {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-self: center;
+    padding: 2%;
+    margin-top: 2rem;
+    h2,
+    p {
+      text-align: start;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    li {
+      list-style: none;
+      margin: 0;
+    }
+  }
+  button {
+    background-color: $work-Blue;
+    color: $work-white;
+    border: none;
+    border-radius: 25px;
+    padding: 0.8rem;
+    align-self: center;
+  }
+}

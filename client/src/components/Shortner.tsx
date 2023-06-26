@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { SERVER_ENDPOINTS } from "../../config";
 import Qqcode from "./Qqcode";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 interface ShortUrl {
   shortId: string;
@@ -18,18 +19,15 @@ function Shortner() {
   const handleCustomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustom(e.target.value);
   };
-  // `${SERVER_ENDPOINTS}/api/url`
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setShortUrl(null);
     try {
-      const response = await axios.post(
-        `https://capstone-scissors-api.onrender.com`,
-        {
-          destination,
-          ...(custom && { custom }),
-        }
-      );
+      const response = await axios.post(`${SERVER_ENDPOINTS}/api/url`, {
+        destination,
+        ...(custom && { custom }),
+      });
       const result = response.data;
       setShortUrl(result);
     } catch (error) {
@@ -47,9 +45,9 @@ function Shortner() {
         />
 
         <div id="input-div">
-          <select name="" id="">
+          {/* <select name="" id="">
             <option value="">Choose Domain</option>
-          </select>
+          </select> */}
           <input
             type="text"
             placeholder="Type Alias here"
@@ -65,25 +63,37 @@ function Shortner() {
         </p>
       </form>
       {shortUrl && (
-        <>
-          <table className="shortner-form">
-            <thead>
-              <th>Long Url</th>
-              <th>Short Url</th>
-              <th>Custom url</th>
-            </thead>
-            <tbody>
-              <td>{destination}</td>
-              <td>{`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}</td>
-              <td>
-                {shortUrl.custom === undefined
-                  ? " "
-                  : `${SERVER_ENDPOINTS}/${shortUrl.custom}`}
-              </td>
-            </tbody>
-          </table>
-          <Qqcode url={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`} />
-        </>
+        <section id="results-div">
+          <>
+            <table className="shortner-form">
+              <thead>
+                <th>Long Url</th>
+                <th>Short Url</th>
+                <th>Custom url</th>
+              </thead>
+              <tbody>
+                <CopyToClipboard text={destination}>
+                  <td>{destination}</td>
+                </CopyToClipboard>
+                <CopyToClipboard
+                  text={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}
+                >
+                  <td>{`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}</td>
+                </CopyToClipboard>
+                <CopyToClipboard
+                  text={`${SERVER_ENDPOINTS}/${shortUrl.custom}`}
+                >
+                  <td>
+                    {shortUrl.custom === undefined
+                      ? " "
+                      : `${SERVER_ENDPOINTS}/${shortUrl.custom}`}
+                  </td>
+                </CopyToClipboard>
+              </tbody>
+            </table>
+            <Qqcode url={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`} />{" "}
+          </>
+        </section>
       )}
     </section>
   );

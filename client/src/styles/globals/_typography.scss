@@ -1,7 +1,24 @@
 $work-font: Avenir Next;
 $small-font-size: 0.875rem;
-
+$big-font-size-h1: 2rem;
+$small-font-size-h1: 1.2rem;
+$big-font-size-h2: 1.7rem;
+$small-font-size-h2: 1rem;
 body {
   font-family: $work-font;
   font-size: $small-font-size;
+}
+h1 {
+  font-size: $small-font-size-h1;
+
+  @media (min-width: 49.75em) {
+    font-size: $big-font-size-h1;
+  }
+}
+h2 {
+  margin-bottom: 2rem;
+  font-size: $small-font-size-h2;
+  @media (min-width: 49.75em) {
+    font-size: $big-font-size-h2;
+  }
 }

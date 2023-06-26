@@ -3,10 +3,10 @@ function Features() {
     <section id="features-section">
       <div id="possiblites-div">
         <div>
-          <h3>
+          <h2>
             One Stop. <br /> Four{" "}
             <span className="blue-text">Possibilities.</span>
-          </h3>
+          </h2>
         </div>
         <div id="stat">
           <div>
@@ -30,9 +30,9 @@ function Features() {
 
       <div id="why-section">
         <div id="why-section-text">
-          <h3>
+          <h2>
             Why choose <span className="blue-text">Scissors</span>
-          </h3>
+          </h2>
           <p>
             Scissors is the hub of everything that has to do with your link
             management. We shorten your URLs, allow you creating custom ones for

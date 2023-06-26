@@ -32,43 +32,36 @@ function Qqcode(prop: QRcodeProps) {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+    <div>
       <h2>set colors</h2>
-      <div style={{ backgroundColor: "white", borderRadius: "8px" }}>
-        <input
-          type="text"
-          value={lightColor}
-          onChange={(e) => {
-            setLightColor(e.target.value);
-          }}
-          placeholder="light color"
-        />
-        <input
-          type="text"
-          value={darkColor}
-          onChange={(e) => {
-            setDarkColor(e.target.value);
-          }}
-          placeholder="dark color"
-        />
+      <div id="colors-input-div">
+        <div>
+          <input
+            type="text"
+            value={lightColor}
+            onChange={(e) => {
+              setLightColor(e.target.value);
+            }}
+            placeholder="light color"
+          />
+          <input
+            type="text"
+            value={darkColor}
+            onChange={(e) => {
+              setDarkColor(e.target.value);
+            }}
+            placeholder="dark color"
+          />
+        </div>
         {prop.url && <button onClick={generateQRcode}>Generate QR Code</button>}
       </div>
       {qrcode && (
-        <>
-          <img
-            src={qrcode}
-            alt="QR Code"
-            style={{
-              display: "block",
-              width: "100%",
-              maxWidth: "480px",
-              borderRadius: "8px",
-            }}
-          />
+        <div id="qr-img">
+          <img src={qrcode} alt="QR Code" />
           <a href={qrcode} download={"qrcode.png"}>
             <button>Download</button>
           </a>
-        </>
+        </div>
       )}
     </div>
   );
