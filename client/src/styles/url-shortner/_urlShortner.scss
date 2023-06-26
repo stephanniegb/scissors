@@ -1,0 +1,71 @@
+@use "../globals" as *;
+
+#shortner-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  #shortner-top {
+    background: linear-gradient(
+      180deg,
+      #1e3448 99.99%,
+      rgba(30, 52, 72, 0) 100%
+    );
+    color: $work-white;
+    border-radius: 8px;
+
+    padding: 1rem;
+    #shortner-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+    }
+    input,
+    select {
+      padding: 0.8rem;
+      border: 1px solid $work-Blue;
+      border-radius: 8px;
+    }
+    select {
+      background: transparent;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      background-color: $work-white;
+      border-radius: 8px;
+      padding: 2rem;
+      width: 70%;
+      margin: 0 auto;
+    }
+    .form-width {
+      width: 70%;
+    }
+    table {
+      background-color: $work-white;
+      width: 70%;
+      padding: 2%;
+      border-radius: 8px;
+      margin-inline: auto;
+      color: black;
+      th {
+        text-align: start;
+      }
+    }
+    button {
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid $work-Blue;
+      background-color: $work-Blue;
+      color: $work-white;
+    }
+  }
+}

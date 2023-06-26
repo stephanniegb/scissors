@@ -21,7 +21,6 @@ const linkschema = new mongoose.Schema(
     },
     custom: {
       type: String,
-      unique: true,
       sparse: true,
     },
     visitHistory: [

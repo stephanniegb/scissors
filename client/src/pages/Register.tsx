@@ -35,7 +35,7 @@ function Register() {
   const { createUsers } = useContext(AuthContext);
 
   return (
-    <main>
+    <main id="login-register">
       <section className="auth-wrappers">
         <div>
           <p>Log in with:</p>

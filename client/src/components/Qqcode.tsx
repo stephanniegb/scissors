@@ -1,16 +1,18 @@
 import { useState } from "react";
 import QRCode from "qrcode";
-import { QRCodeSVG } from "qrcode.react";
 
-function Qqcode() {
-  const [url, setUrl] = useState("");
+type QRcodeProps = {
+  url: string;
+};
+
+function Qqcode(prop: QRcodeProps) {
   const [qrcode, setQrcode] = useState("");
   const [darkColor, setDarkColor] = useState("#335383FF");
   const [lightColor, setLightColor] = useState("#ffffff");
 
   const generateQRcode = () => {
     QRCode.toDataURL(
-      url,
+      prop.url,
       {
         width: 800,
         margin: 2,
@@ -30,24 +32,9 @@ function Qqcode() {
   };
 
   return (
-    <div style={{ background: "darkblue" }}>
-      <QRCodeSVG
-        value="https://reactjs.org/"
-        level="Q"
-        bgColor="#ffffff"
-        fgColor="#335383FF"
-      />
-      ,
-      <input
-        type="text"
-        placeholder="enter url"
-        value={url}
-        onChange={(e) => {
-          setUrl(e.target.value);
-        }}
-      />
-      <div>
-        <h2>set colors</h2>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <h2>set colors</h2>
+      <div style={{ backgroundColor: "white", borderRadius: "8px" }}>
         <input
           type="text"
           value={lightColor}
@@ -64,8 +51,8 @@ function Qqcode() {
           }}
           placeholder="dark color"
         />
+        {prop.url && <button onClick={generateQRcode}>Generate QR Code</button>}
       </div>
-      <button onClick={generateQRcode}>Generate</button>
       {qrcode && (
         <>
           <img
@@ -79,7 +66,7 @@ function Qqcode() {
             }}
           />
           <a href={qrcode} download={"qrcode.png"}>
-            Download
+            <button>Download</button>
           </a>
         </>
       )}

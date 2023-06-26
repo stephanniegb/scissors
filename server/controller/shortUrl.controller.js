@@ -87,12 +87,6 @@ export async function handleCustomRedirect(req, res) {
 export async function createCustomUrl(req, res) {
   const { destination, custom } = req.body;
   try {
-    const linkExists = await shortUrl.findOne({ shortId: custom });
-
-    if (linkExists) {
-      throw new Error(`${custom} already in use`);
-    }
-
     const newCustomUrl = await shortUrl.create({
       destination: destination,
       shortId: custom,

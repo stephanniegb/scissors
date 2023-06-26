@@ -11,7 +11,7 @@ import {
 
 function Dashboard() {
   return (
-    <main>
+    <main id="dashboard">
       <Navbar />
       <Hero />
       <Features />

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { SERVER_ENDPOINTS } from "../../config";
+import Qqcode from "./Qqcode";
 
 interface ShortUrl {
   shortId: string;
@@ -17,15 +18,18 @@ function Shortner() {
   const handleCustomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustom(e.target.value);
   };
-
+  // `${SERVER_ENDPOINTS}/api/url`
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setShortUrl(null);
     try {
-      const response = await axios.post(`${SERVER_ENDPOINTS}/api/url`, {
-        destination,
-        ...(custom && { custom }),
-      });
+      const response = await axios.post(
+        `https://capstone-scissors-api.onrender.com`,
+        {
+          destination,
+          ...(custom && { custom }),
+        }
+      );
       const result = response.data;
       setShortUrl(result);
     } catch (error) {
@@ -33,14 +37,15 @@ function Shortner() {
     }
   };
   return (
-    <section id="shortner-section">
-      <form onSubmit={handleSubmit}>
+    <section id="shortner-section" className="">
+      <form onSubmit={handleSubmit} className="form-width">
         <input
           type="text"
-          placeholder="Paste URL here..."
+          placeholder="Paste long URL here..."
           value={destination}
           onChange={handleUrlChange}
         />
+
         <div id="input-div">
           <select name="" id="">
             <option value="">Choose Domain</option>
@@ -51,7 +56,7 @@ function Shortner() {
             onChange={handleCustomChange}
           />
         </div>
-        <button type="submit">
+        <button type="submit" id="btn-2">
           Trim URL <img src="/images/magic wand.svg" alt="" />
         </button>
         <p>
@@ -59,33 +64,27 @@ function Shortner() {
           <b>Privacy Policy</b> and Use of Cookies.
         </p>
       </form>
-      <div id="url-div">
-        {shortUrl && custom.length > 0 && (
-          <>
-            <div>
-              <h4>Link</h4>
-              <a href={`${SERVER_ENDPOINTS}/${shortUrl.custom}`}>Click me</a>
-            </div>
-            <div>
-              <h4>Copy Url</h4>
-              <p>{`${SERVER_ENDPOINTS}/${shortUrl.custom}`}</p>
-            </div>
-          </>
-        )}
-        {shortUrl && (
-          <>
-            <div>
-              <h4>Link</h4>
-              <a href={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}>Click me</a>
-            </div>
-            <div>
-              <h4>Copy Url</h4>
-              <p>{`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}</p>
-            </div>
-          </>
-        )}
-        {/* {JSON.stringify(shortUrl)} */}
-      </div>
+      {shortUrl && (
+        <>
+          <table className="shortner-form">
+            <thead>
+              <th>Long Url</th>
+              <th>Short Url</th>
+              <th>Custom url</th>
+            </thead>
+            <tbody>
+              <td>{destination}</td>
+              <td>{`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}</td>
+              <td>
+                {shortUrl.custom === undefined
+                  ? " "
+                  : `${SERVER_ENDPOINTS}/${shortUrl.custom}`}
+              </td>
+            </tbody>
+          </table>
+          <Qqcode url={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`} />
+        </>
+      )}
     </section>
   );
 }

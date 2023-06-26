@@ -1,62 +1,20 @@
 @use "../globals" as *;
-main {
+#dashboard {
   display: grid;
   gap: 2rem;
+
   .blue-text {
     color: $work-Blue;
   }
-  nav {
-    display: grid;
-    grid-template-columns: 15% 55% 30%;
-    padding-inline: 10%;
-    justify-content: center;
-    .blue-text {
-      color: $work-Blue;
-    }
-    .logo-div {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      cursor: pointer;
-    }
-    ul {
-      display: flex;
 
-      gap: 3rem;
-      li {
-        list-style: none;
-        cursor: pointer;
-      }
-    }
-    #nav-btns {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      button {
-        padding: 3%;
-        border: none;
-        cursor: pointer;
-      }
-      .transparent-btn {
-        background: transparent;
-        border: none;
-        color: $work-Blue;
-      }
-      .blue-btn {
-        background-color: $work-Blue;
-        color: $work-white;
-        border-radius: 25px;
-        width: 6rem;
-        padding: 0.7rem;
-      }
-    }
-  }
   // // // // // // // //
   #hero {
     padding: 2% 10%;
+    display: grid;
+    gap: 2rem;
     align-items: center;
     justify-content: center;
-    // height: 100vh;
+
     h1 {
       text-align: center;
       // padding-inline: 15%;
@@ -65,7 +23,7 @@ main {
     }
     u {
       text-decoration: none;
-      background: url("../../../public/images/Vector\ 3.svg");
+      background: url("/images/Vector\ 3.svg");
       background-repeat: no-repeat;
       background-position: right 10px center;
       background-position-y: 150%;
@@ -203,13 +161,12 @@ main {
       color: $work-white;
       border: none;
       border-radius: 25px;
-      // width: 10%;
       padding: 0.8rem;
       align-self: center;
     }
   }
   #shortner-section {
-    background: url("../../../public/images/Rectangle\ 1.png");
+    background: url("/images/Rectangle\ 1.png");
     padding: 5%;
     display: flex;
     flex-direction: column;
@@ -220,11 +177,14 @@ main {
       display: flex;
       flex-direction: column;
       margin-inline: auto;
-      width: 45%;
+
       padding: 2%;
-      gap: 2.2rem;
+      gap: 1.5rem;
       background-color: $work-white;
       border-radius: 8px;
+      #btn-1 {
+        display: none;
+      }
       input,
       select {
         border: 1px solid $work-Blue;
@@ -238,7 +198,7 @@ main {
         color: $work-Blue;
       }
 
-      button {
+      #btn-2 {
         background-color: $work-Blue;
         color: $work-white;
         border: none;
@@ -249,7 +209,7 @@ main {
       }
       select {
         appearance: none;
-        background-image: url("../../../public/images/Vector\(18\).svg");
+        background-image: url("/images/Vector\(18\).svg");
         background-repeat: no-repeat;
         background-position: right 10px center;
       }
@@ -266,16 +226,30 @@ main {
         align-self: center;
       }
     }
-    #url-div {
-      background-color: $work-white;
+    .form-width {
       width: 45%;
-      padding: 2%;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-self: center;
-      margin-inline: auto;
     }
+    table {
+      background-color: $work-white;
+      width: 100%;
+      padding: 2%;
+
+      border-radius: 8px;
+      margin-inline: auto;
+      th {
+        text-align: start;
+      }
+    }
+    // #url-div {
+    //   background-color: $work-white;
+    //   width: 45%;
+    //   padding: 2%;
+    //   border-radius: 8px;
+    //   display: flex;
+    //   justify-content: space-between;
+    //   align-self: center;
+    //   margin-inline: auto;
+    // }
   }
   #faq-section {
     display: flex;
@@ -320,7 +294,7 @@ main {
     }
   }
   #banner-section {
-    background: url("../../../public/images/Rectangle\ 1.png");
+    background: url("/images/Rectangle\ 1.png");
     padding: 7%;
     display: flex;
     flex-direction: column;
@@ -338,6 +312,90 @@ main {
       border-radius: 25px;
       width: 6rem;
       padding: 0.7rem;
+    }
+  }
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 15% 55% 30%;
+  padding-inline: 10%;
+  justify-content: center;
+  a {
+    text-decoration: none;
+  }
+  color: $work-Blue;
+  .blue-text {
+    color: $work-Blue;
+  }
+  .logo-div {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  ul {
+    display: flex;
+
+    gap: 3rem;
+    li {
+      list-style: none;
+      cursor: pointer;
+    }
+  }
+  #nav-btns {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    button {
+      padding: 3%;
+      border: none;
+      cursor: pointer;
+    }
+    .transparent-btn {
+      background: transparent;
+      border: none;
+      color: $work-Blue;
+    }
+    .blue-btn {
+      background-color: $work-Blue;
+      color: $work-white;
+      border-radius: 25px;
+      width: 6rem;
+      padding: 0.7rem;
+    }
+  }
+  #nav-profile {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 1rem;
+    img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+    }
+    #signOut-div {
+      display: none;
+    }
+    #signOut-div.active {
+      position: absolute;
+      background-color: $work-white;
+      padding: 0.5rem;
+      border-radius: 8px;
+      width: 50%;
+      bottom: -50px;
+      right: 50%;
+      display: flex;
+      justify-content: center;
+      transition: all 0.3s;
+      button {
+        padding: 0.5rem;
+        background-color: $work-Blue;
+        border: none;
+        color: $work-white;
+        border-radius: 8px;
+      }
     }
   }
 }
