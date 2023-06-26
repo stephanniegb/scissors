@@ -47,10 +47,6 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - Typescript
 
-### Continued development
-
-I will focus on building better and more user friendly websites and app with ReactJS amd other technologies
-
 ### Useful resources
 
 - [A blog post by Jima Victor](https://webcodespace.com/how-to-create-a-three-state-toggle-switch-using-html-css-and-javascript) - This helped me figure out how to handle the toggle switch. I really liked this pattern and will use it going forward.
