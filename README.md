@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://scissors-it3t.vercel.app/)
+- Live Site URL: [live link](https://scissors-it3t.vercel.app/)
 
 ## My process
 
