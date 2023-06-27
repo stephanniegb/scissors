@@ -94,30 +94,44 @@
         }
       }
     }
-    #colors-input-div {
-      background-color: $work-white;
-      display: flex;
+    button {
+      padding: 0.75rem;
       border-radius: 8px;
-      flex-direction: column;
-      gap: 2rem;
-      padding: 5%;
-      div {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        input {
-          width: 100%;
-        }
+      border: 1px solid $work-Blue;
+      background-color: $work-Blue;
+      color: $work-white;
+    }
+  }
+  #colors-input-div {
+    background-color: $work-white;
+    display: flex;
+    border-radius: 8px;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 5%;
+    transition: all 0.4s;
+    div {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      input {
+        width: 100%;
+        border: 1px solid $work-Blue;
+        padding: 0.8rem;
+        border-radius: 8px;
+        width: 80%;
+        background-color: transparent;
+        align-self: center;
       }
     }
-    #qr-img {
-      padding: 10%;
-      display: block;
-      max-width: 480px;
-      img {
-        border-radius: 8px;
-        width: 100%;
-      }
+  }
+  #qr-img {
+    padding: 10%;
+    display: block;
+    max-width: 480px;
+    img {
+      border-radius: 8px;
+      width: 100%;
     }
   }
 }

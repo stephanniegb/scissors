@@ -2,6 +2,7 @@
 #dashboard {
   display: grid;
   gap: 2rem;
+  position: relative;
 
   .blue-text {
     color: $work-Blue;
