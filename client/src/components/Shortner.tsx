@@ -24,10 +24,13 @@ function Shortner() {
     event.preventDefault();
     setShortUrl(null);
     try {
-      const response = await axios.post(`${SERVER_ENDPOINTS}/api/url`, {
-        destination,
-        ...(custom && { custom }),
-      });
+      const response = await axios.post(
+        `https://capstone-scissors-api.onrender.com/api/url`,
+        {
+          destination,
+          ...(custom && { custom }),
+        }
+      );
       const result = response.data;
       setShortUrl(result);
     } catch (error) {
