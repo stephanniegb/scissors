@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { SERVER_ENDPOINTS } from "../../config";
-import Qqcode from "./Qqcode";
+import Qqcode from "./QrCode";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 interface ShortUrl {
@@ -12,6 +12,7 @@ function Shortner() {
   const [destination, setDestination] = useState("");
   const [custom, setCustom] = useState("");
   const [shortUrl, setShortUrl] = useState<ShortUrl | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDestination(e.target.value);
@@ -24,12 +25,15 @@ function Shortner() {
     event.preventDefault();
     setShortUrl(null);
     try {
+      setIsLoading(true);
       const response = await axios.post(`${SERVER_ENDPOINTS}/api/url`, {
         destination,
         ...(custom && { custom }),
       });
       const result = response.data;
       setShortUrl(result);
+      setIsLoading(false);
+      console.log(isLoading);
     } catch (error) {
       console.log("Error creating short URL:", error);
     }
@@ -45,17 +49,15 @@ function Shortner() {
         />
 
         <div id="input-div">
-          {/* <select name="" id="">
-            <option value="">Choose Domain</option>
-          </select> */}
           <input
             type="text"
             placeholder="Type Alias here"
             onChange={handleCustomChange}
           />
         </div>
-        <button type="submit" id="btn-2">
+        <button type="submit" id="btn-2" disabled={isLoading ? true : false}>
           Trim URL <img src="/images/magic wand.svg" alt="" />
+          {isLoading && <div className="loader" data-testid="loader"></div>}
         </button>
         <p>
           By clicking TrimURL, I agree to the <b>Terms of Service</b>, <br />
@@ -73,20 +75,37 @@ function Shortner() {
               </thead>
               <tbody>
                 <CopyToClipboard text={destination}>
-                  <td>{destination}</td>
+                  <td>
+                    {destination}{" "}
+                    <span>
+                      <img src="/icon/copy.svg" alt="" />
+                    </span>
+                  </td>
                 </CopyToClipboard>
                 <CopyToClipboard
                   text={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}
                 >
-                  <td>{`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}</td>
+                  <td>
+                    {`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}
+                    <span>
+                      <img src="/icon/copy.svg" alt="" />
+                    </span>
+                  </td>
                 </CopyToClipboard>
                 <CopyToClipboard
                   text={`${SERVER_ENDPOINTS}/${shortUrl.custom}`}
                 >
                   <td>
-                    {shortUrl.custom === undefined
-                      ? " "
-                      : `${SERVER_ENDPOINTS}/${shortUrl.custom}`}
+                    {shortUrl.custom === undefined ? (
+                      " "
+                    ) : (
+                      <>
+                        {`${SERVER_ENDPOINTS}/${shortUrl.custom}`}{" "}
+                        <span>
+                          <img src="/icon/copy.svg" alt="" />
+                        </span>
+                      </>
+                    )}
                   </td>
                 </CopyToClipboard>
               </tbody>

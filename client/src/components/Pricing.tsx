@@ -110,9 +110,7 @@ function Pricing() {
           </ul>
         </div>
       </section>
-      {/* <section style={{ alignSelf: "center" }}> */}
       <button>Select Pricing</button>
-      {/* </section> */}
     </section>
   );
 }

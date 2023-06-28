@@ -9,6 +9,9 @@
     font-size: 2rem;
     margin-bottom: 2rem;
   }
+  h2 {
+    color: $work-white;
+  }
   #shortner-top {
     background: linear-gradient(
       180deg,
@@ -66,9 +69,6 @@
         flex-direction: column;
         gap: 2rem;
         padding: 1%;
-        // @media (min-width: 49.75em) {
-        //   display: block;
-        // }
       }
 
       th {

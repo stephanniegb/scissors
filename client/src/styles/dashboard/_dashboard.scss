@@ -14,6 +14,9 @@
     gap: 2rem;
     align-items: center;
     justify-content: center;
+    @media (min-width: 49.75em) {
+      margin-top: 10%;
+    }
 
     h1 {
       text-align: center;

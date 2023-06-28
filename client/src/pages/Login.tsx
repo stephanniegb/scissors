@@ -58,7 +58,7 @@ function Login() {
               name="email_Username"
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="Email address or username"
+              placeholder="Email address"
               className={
                 errors.email_Username && touched.email_Username
                   ? "input-error"

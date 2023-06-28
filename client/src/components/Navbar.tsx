@@ -10,10 +10,15 @@ function Navbar() {
   const signOutHandler = () => {
     signOut();
     navigate("/");
+    setHamburgerActive(!hamburgerActive);
   };
 
   const handleToggle = () => {
     setLogOUtActive(!logoutActive);
+  };
+
+  const handleToggleNav = () => {
+    setHamburgerActive(!hamburgerActive);
   };
 
   return (
@@ -27,12 +32,7 @@ function Navbar() {
           </div>
         </Link>
       </div>
-      <button
-        id="hamburger"
-        onClick={() => {
-          setHamburgerActive(!hamburgerActive);
-        }}
-      >
+      <button id="hamburger" onClick={handleToggleNav}>
         <span className={hamburgerActive ? " bar active" : "bar"}></span>
         <span className={hamburgerActive ? " bar active" : "bar"}></span>
       </button>
@@ -112,16 +112,16 @@ function Navbar() {
           <button onClick={signOutHandler}>
             <li>Sign out</li>
           </button>
-          <Link to={"/urlshortner"}>
+          <Link to={"/urlshortner"} onClick={handleToggleNav}>
             <li>My URLs</li>
           </Link>
-          <a href="#features-section">
+          <a href="#features-section" onClick={handleToggleNav}>
             <li>Features</li>
           </a>
-          <a href="#pricing-section">
+          <a href="#pricing-section" onClick={handleToggleNav}>
             <li>Pricing</li>
           </a>
-          <a href="#faq-section">
+          <a href="#faq-section" onClick={handleToggleNav}>
             <li>FAQs</li>
           </a>
         </ul>
