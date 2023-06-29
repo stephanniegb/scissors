@@ -14,6 +14,10 @@ function Shortner() {
   const [shortUrl, setShortUrl] = useState<ShortUrl | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [copiedLongUrl, setCopiedLongUrl] = useState(false);
+  const [copiedShortUrl, setCopiedShortUrl] = useState(false);
+  const [copiedCustomUrl, setCopiedCustomUrl] = useState(false);
+
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDestination(e.target.value);
   };
@@ -37,6 +41,28 @@ function Shortner() {
       console.log("Error creating short URL:", error);
     }
   };
+
+  const handleCustomCopy = () => {
+    setCopiedCustomUrl(true);
+    setTimeout(() => {
+      setCopiedCustomUrl(false);
+    }, 1000); // Reset 'copied' state to false after 1 seconds
+  };
+
+  const handleLongCopy = () => {
+    setCopiedLongUrl(true);
+    setTimeout(() => {
+      setCopiedLongUrl(false);
+    }, 1000);
+  };
+
+  const handleShortCopy = () => {
+    setCopiedShortUrl(true);
+    setTimeout(() => {
+      setCopiedShortUrl(false);
+    }, 1000);
+  };
+
   return (
     <section id="shortner-section" className="">
       <form onSubmit={handleSubmit} className="form-width">
@@ -63,6 +89,7 @@ function Shortner() {
           <b>Privacy Policy</b> and Use of Cookies.
         </p>
       </form>
+
       {shortUrl && (
         <section id="results-div">
           <section className="shortner-result">
@@ -73,21 +100,38 @@ function Shortner() {
                   {destination}
                 </a>
 
-                <CopyToClipboard text={destination}>
-                  <img src="/icon/copy.svg" alt="copy" />
+                <CopyToClipboard text={destination} onCopy={handleLongCopy}>
+                  <button className="copy-btn">
+                    {copiedLongUrl ? (
+                      <img src="/icon/check.svg" alt="copied" />
+                    ) : (
+                      <img src="/icon/copy.svg" alt="copy" />
+                    )}
+                  </button>
                 </CopyToClipboard>
               </div>
             </div>
             <div>
               <h3>Short Url</h3>
               <div className="result">
-                <a
-                  href={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >{`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}</a>
-                <CopyToClipboard text="help">
-                  <img src="/icon/copy.svg" alt="copy" />
+                <div>
+                  <a
+                    href={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >{`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}</a>
+                </div>
+                <CopyToClipboard
+                  text={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}
+                  onCopy={handleShortCopy}
+                >
+                  <button className="copy-btn">
+                    {copiedShortUrl ? (
+                      <img src="/icon/check.svg" alt="copied" />
+                    ) : (
+                      <img src="/icon/copy.svg" alt="copy" />
+                    )}
+                  </button>
                 </CopyToClipboard>
               </div>
             </div>
@@ -103,8 +147,15 @@ function Shortner() {
 
                   <CopyToClipboard
                     text={`${SERVER_ENDPOINTS}/${shortUrl.custom}`}
+                    onCopy={handleCustomCopy}
                   >
-                    <img src="/icon/copy.svg" alt="copy" />
+                    <button className="copy-btn">
+                      {copiedCustomUrl ? (
+                        <img src="/icon/check.svg" alt="copied" />
+                      ) : (
+                        <img src="/icon/copy.svg" alt="copy" />
+                      )}
+                    </button>
                   </CopyToClipboard>
                 </div>
               </div>
