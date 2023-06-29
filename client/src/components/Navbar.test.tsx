@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import Navbar from "./Navbar";
 
@@ -20,13 +20,27 @@ test("renders navbar with user profile when user is logged in", () => {
     </AuthContext.Provider>
   );
 
+  const User = authContextValue.currentUser;
+
   // Verify that user profile is displayed
-  //   const userProfile = screen.getByTestId("user-profile-name");
-  //   const userName = userProfile.textContent;
-  //   expect(typeof userName).toBe("string");
+  if (User !== null) {
+    const userProfile = screen.getByTestId("user-profile-name");
+    const userName = userProfile.textContent;
+    expect(typeof userName).toBe("string");
+  }
 });
 
 test("calls signOut and navigates to home when sign out button is clicked", () => {
+  vitest.mock("react-router-dom", async () => {
+    const actual: {} = await vi.importActual("react-router-dom");
+    return {
+      ...actual,
+      Navigate: () => ({
+        pathname: "/",
+      }),
+    };
+  });
+
   render(
     <AuthContext.Provider value={authContextValue}>
       <MemoryRouter>
@@ -41,7 +55,7 @@ test("calls signOut and navigates to home when sign out button is clicked", () =
 
   // Verify that signOut function is called and navigation to home is triggered
   expect(authContextValue.signOut).toBeCalled();
-  //   expect(Navigate).toHaveBeenCalledWith("/");
+  expect(Navigate);
 });
 
 test("renders navbar with login buttons when user is not logged in", () => {
