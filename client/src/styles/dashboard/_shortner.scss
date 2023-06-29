@@ -7,6 +7,7 @@
   align-items: center;
   gap: 3rem;
   padding: 2%;
+  border-radius: 8px;
   @media (min-width: 49.75em) {
     padding: 5%;
   }
@@ -74,30 +75,37 @@
     @media (min-width: 49.75em) {
       width: 70%;
     }
-    table {
+
+    .shortner-result {
       background-color: $work-white;
-      width: 100%;
+      color: $work-fontColor;
       padding: 2%;
       border-radius: 8px;
-      display: flex;
-
-      margin-inline: auto;
-
-      th {
-        text-align: start;
-        display: flex;
-        @media (min-width: 49.75em) {
-          display: block;
-        }
+      width: 100%;
+      h3 {
+        color: $work-Blue;
       }
-      td {
+      a {
+        color: $work-fontColor;
+        font-size: 0.7rem;
+      }
+      a:hover {
+        color: $work-Blue;
+      }
+      .result {
+        // background-color: red;
+        // background-color: rgb(224, 224, 224);
+        background-color: $grey;
+        border-radius: 8px;
         display: flex;
-        cursor: pointer;
-        @media (min-width: 49.75em) {
-          display: block;
+        justify-content: space-between;
+        padding: 0.5rem;
+        img {
+          cursor: pointer;
         }
       }
     }
+
     button {
       padding: 0.75rem;
       border-radius: 8px;

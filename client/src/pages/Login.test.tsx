@@ -4,7 +4,6 @@ import Login from "./Login";
 import { Navigate } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 
-// Mock the createUsers function
 const mockCreateUsers = vitest.fn();
 
 test("Register component", () => {

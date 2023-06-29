@@ -33,7 +33,6 @@ function Shortner() {
       const result = response.data;
       setShortUrl(result);
       setIsLoading(false);
-      console.log(isLoading);
     } catch (error) {
       console.log("Error creating short URL:", error);
     }
@@ -66,52 +65,52 @@ function Shortner() {
       </form>
       {shortUrl && (
         <section id="results-div">
-          <>
-            <table className="shortner-form">
-              <thead>
-                <th>Long Url</th>
-                <th>Short Url</th>
-                <th>Custom url</th>
-              </thead>
-              <tbody>
+          <section className="shortner-result">
+            <div>
+              <h3>Long Url</h3>
+              <div className="result">
+                <a href={destination} target="_blank" rel="noopener noreferrer">
+                  {destination}
+                </a>
+
                 <CopyToClipboard text={destination}>
-                  <td>
-                    {destination}{" "}
-                    <span>
-                      <img src="/icon/copy.svg" alt="" />
-                    </span>
-                  </td>
+                  <img src="/icon/copy.svg" alt="copy" />
                 </CopyToClipboard>
-                <CopyToClipboard
-                  text={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}
-                >
-                  <td>
-                    {`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}
-                    <span>
-                      <img src="/icon/copy.svg" alt="" />
-                    </span>
-                  </td>
+              </div>
+            </div>
+            <div>
+              <h3>Short Url</h3>
+              <div className="result">
+                <a
+                  href={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >{`${SERVER_ENDPOINTS}/${shortUrl.shortId}`}</a>
+                <CopyToClipboard text="help">
+                  <img src="/icon/copy.svg" alt="copy" />
                 </CopyToClipboard>
-                <CopyToClipboard
-                  text={`${SERVER_ENDPOINTS}/${shortUrl.custom}`}
-                >
-                  <td>
-                    {shortUrl.custom === undefined ? (
-                      " "
-                    ) : (
-                      <>
-                        {`${SERVER_ENDPOINTS}/${shortUrl.custom}`}{" "}
-                        <span>
-                          <img src="/icon/copy.svg" alt="" />
-                        </span>
-                      </>
-                    )}
-                  </td>
-                </CopyToClipboard>
-              </tbody>
-            </table>
-            <Qqcode url={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`} />{" "}
-          </>
+              </div>
+            </div>
+            {shortUrl.custom && (
+              <div>
+                <h3>Custom url</h3>
+                <div className="result">
+                  <a
+                    href={`${SERVER_ENDPOINTS}/${shortUrl.custom}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >{`${SERVER_ENDPOINTS}/${shortUrl.custom}`}</a>
+
+                  <CopyToClipboard
+                    text={`${SERVER_ENDPOINTS}/${shortUrl.custom}`}
+                  >
+                    <img src="/icon/copy.svg" alt="copy" />
+                  </CopyToClipboard>
+                </div>
+              </div>
+            )}
+          </section>
+          <Qqcode url={`${SERVER_ENDPOINTS}/${shortUrl.custom}`} />{" "}
         </section>
       )}
     </section>
