@@ -49,10 +49,6 @@
         position: relative;
       }
       .error {
-        color: rgb(250, 74, 74);
-        font-size: 0.8rem;
-        padding: 0;
-        margin: 0;
         text-align: start;
       }
       .show-btn {
@@ -85,4 +81,10 @@
       color: #8494a1;
     }
   }
+}
+.error {
+  color: rgb(250, 74, 74);
+  font-size: 0.5rem;
+  padding: 0;
+  margin: 0;
 }

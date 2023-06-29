@@ -28,11 +28,15 @@ function Register() {
 
   const submitHandler = (e: any) => {
     e.preventDefault();
+    setError(null);
+
     createUsers(values);
     handleSubmit;
-    navigate("/login");
+    if (error === null) {
+      navigate("/login");
+    }
   };
-  const { createUsers } = useContext(AuthContext);
+  const { createUsers, error, setError } = useContext(AuthContext);
 
   return (
     <main id="login-register">
@@ -51,6 +55,7 @@ function Register() {
         <div>
           <span className="dash"></span> or <span className="dash"></span>
         </div>
+        {error && <p className="error">{error}</p>}
         <form onSubmit={submitHandler}>
           <div className="input-div">
             <input

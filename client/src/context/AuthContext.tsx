@@ -15,6 +15,8 @@ interface AuthContextProps {
   signInUsers: (values: LoginFormValues) => Promise<void>;
   createUsers: (values: RegisterformValues) => Promise<void>;
   setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>;
+  error: null | string;
+  setError: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 interface LoginFormValues {
@@ -35,10 +37,14 @@ export const AuthContext = createContext<AuthContextProps>({
   signInUsers: async () => {},
   createUsers: async () => {},
   setCurrentUser: () => {},
+  error: null,
+  setError: () => {},
 });
 
 export const AuthProvider = ({ children }: any) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -65,6 +71,24 @@ export const AuthProvider = ({ children }: any) => {
       console.log("User:", user);
     } catch (error) {
       console.error(error);
+      if (
+        error instanceof Error &&
+        error.message.includes("email-already-in-use")
+      ) {
+        setError("Email is already in use. Please choose a different email.");
+      } else if (
+        error instanceof Error &&
+        error.message.includes("invalid-email")
+      ) {
+        setError("Invalid email address. Please enter a valid email.");
+      } else if (
+        error instanceof Error &&
+        error.message.includes("weak-password")
+      ) {
+        setError("Weak password. Please choose a stronger password.");
+      } else {
+        setError("Failed to create user. Please try again.");
+      }
     }
   };
 
@@ -81,6 +105,15 @@ export const AuthProvider = ({ children }: any) => {
       console.log("User:", user.displayName);
     } catch (error) {
       console.error(error);
+      if (
+        error instanceof Error &&
+        (error.message.includes("user-not-found") ||
+          error.message.includes("wrong-password"))
+      ) {
+        setError("Invalid email or password. Please check your credentials.");
+      } else {
+        setError("Failed to sign in. Please try again.");
+      }
     }
   };
 
@@ -98,6 +131,8 @@ export const AuthProvider = ({ children }: any) => {
     signInUsers: signInUsers,
     createUsers: createUsers,
     setCurrentUser: setCurrentUser,
+    error: error,
+    setError: setError,
   };
 
   return (

@@ -22,14 +22,17 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const { signInUsers, currentUser } = useContext(AuthContext);
+  const { signInUsers, currentUser, error, setError } = useContext(AuthContext);
   console.log(currentUser);
 
   const submitHandler = (e: any) => {
     e.preventDefault();
+    setError(null);
     signInUsers(values);
-    navigate("/urlshortner");
     handleSubmit;
+    if (error === null) {
+      navigate("/urlshortner");
+    }
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -50,7 +53,7 @@ function Login() {
         <div>
           <span className="dash"></span> or <span className="dash"></span>
         </div>
-
+        {error && <p className="error">{error}</p>}
         <form onSubmit={submitHandler}>
           <div className="input-div">
             <input
