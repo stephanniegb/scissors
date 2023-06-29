@@ -22,8 +22,13 @@ function Register() {
   } = useFormik(registerFormConfig);
 
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+    setShowPassword(!showPassword);
+  };
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   const submitHandler = (e: any) => {
@@ -116,7 +121,7 @@ function Register() {
           </div>
           <div className="password-div input-div">
             <input
-              type={showPassword ? "text" : "password"}
+              type={showConfirmPassword ? "text" : "password"}
               name="confirmPassword"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -129,10 +134,10 @@ function Register() {
             />
             <button
               type="button"
-              onClick={togglePasswordVisibility}
+              onClick={toggleConfirmPasswordVisibility}
               className="show-btn"
             >
-              {showPassword ? (
+              {showConfirmPassword ? (
                 <FontAwesomeIcon icon={faEyeSlash} className="eye-icon" />
               ) : (
                 <FontAwesomeIcon icon={faEye} className="eye-icon" />
