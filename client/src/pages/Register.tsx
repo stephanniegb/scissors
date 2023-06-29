@@ -34,7 +34,6 @@ function Register() {
   const submitHandler = (e: any) => {
     e.preventDefault();
     setError(null);
-
     createUsers(values);
     handleSubmit;
     if (error === null) {
