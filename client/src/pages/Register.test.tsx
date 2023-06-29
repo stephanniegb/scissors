@@ -14,6 +14,8 @@ test("Register component", () => {
       signInUsers: vitest.fn(),
       setCurrentUser: vitest.fn(),
       createUsers: mockCreateUsers,
+      error: null,
+      setError: vitest.fn(),
     };
     const { getByPlaceholderText, getByText } = render(
       <Router>
