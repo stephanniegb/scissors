@@ -9,6 +9,8 @@ const authContextValue = {
   signInUsers: vitest.fn(),
   setCurrentUser: vitest.fn(),
   createUsers: vitest.fn(),
+  error: null,
+  setError: vitest.fn(),
 };
 
 test("renders navbar with user profile when user is logged in", () => {
