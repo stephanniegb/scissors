@@ -140,13 +140,13 @@ function Shortner() {
                 <h3>Custom url</h3>
                 <div className="result">
                   <a
-                    href={`${SERVER_ENDPOINTS}/${shortUrl.custom}`}
+                    href={`${SERVER_ENDPOINTS}/c/${shortUrl.custom}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                  >{`${SERVER_ENDPOINTS}/${shortUrl.custom}`}</a>
+                  >{`${SERVER_ENDPOINTS}/c/${shortUrl.custom}`}</a>
 
                   <CopyToClipboard
-                    text={`${SERVER_ENDPOINTS}/${shortUrl.custom}`}
+                    text={`${SERVER_ENDPOINTS}/c/${shortUrl.custom}`}
                     onCopy={handleCustomCopy}
                   >
                     <button className="copy-btn">
@@ -161,7 +161,7 @@ function Shortner() {
               </div>
             )}
           </section>
-          <Qqcode url={`${SERVER_ENDPOINTS}/${shortUrl.custom}`} />{" "}
+          <Qqcode url={`${SERVER_ENDPOINTS}/${shortUrl.shortId}`} />{" "}
         </section>
       )}
     </section>
