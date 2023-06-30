@@ -46,7 +46,7 @@ function Register() {
     <main id="login-register">
       <section className="auth-wrappers">
         <div>
-          <p>Log in with:</p>
+          <p>Sign up with:</p>
           <div className="google-apple-div">
             <a href="#">
               <img src="images/Google.svg" alt="" />
