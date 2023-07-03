@@ -12,7 +12,7 @@ Scissors is a web application built with React, TypeScript, and SCSS that allows
 
   - [Built with](#built-with)
 
-  - [Useful resources](#useful-resources)
+  
 
 - [Author](#author)
 
@@ -46,10 +46,6 @@ Users should be able to:
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 - Typescript
-
-### Useful resources
-
-- [A blog post by Jima Victor](https://webcodespace.com/how-to-create-a-three-state-toggle-switch-using-html-css-and-javascript) - This helped me figure out how to handle the toggle switch. I really liked this pattern and will use it going forward.
 
 ## Author
 
